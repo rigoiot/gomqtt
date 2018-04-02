@@ -34,6 +34,8 @@ type Client struct {
 	engine *Engine
 	conn   transport.Conn
 
+	replaced bool
+
 	clientID     string
 	cleanSession bool
 	session      Session
@@ -682,4 +684,17 @@ func (c *Client) log(event LogEvent, client *Client, pkt packet.GenericPacket, m
 	if c.engine.Logger != nil {
 		c.engine.Logger(event, client, pkt, msg, err)
 	}
+}
+
+// Replace will close self and mark the replaced flag
+func (c *Client) Replace() {
+	c.Close(true)
+	c.mutex.Lock()
+	defer c.mutex.Unlock()
+	c.replaced = true
+}
+
+// Replaced return if the client is replaced by new client
+func (c *Client) Replaced() bool {
+	return c.replaced
 }
