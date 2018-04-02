@@ -7,6 +7,7 @@ import (
 
 	"github.com/256dpi/gomqtt/packet"
 	"github.com/256dpi/gomqtt/topic"
+	uuid "github.com/satori/go.uuid"
 )
 
 // Direction denotes a packets direction.
@@ -22,6 +23,7 @@ const (
 
 // A MemorySession stores packets in memory.
 type MemorySession struct {
+	ID            uuid.UUID
 	counter       *IDCounter
 	incStore      *PacketStore
 	outStore      *PacketStore
@@ -33,6 +35,7 @@ type MemorySession struct {
 // NewMemorySession returns a new MemorySession.
 func NewMemorySession() *MemorySession {
 	return &MemorySession{
+		ID:            uuid.NewV4(),
 		counter:       NewIDCounter(),
 		incStore:      NewPacketStore(),
 		outStore:      NewPacketStore(),
