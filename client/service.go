@@ -8,8 +8,8 @@ import (
 
 	"github.com/256dpi/gomqtt/client/future"
 	"github.com/256dpi/gomqtt/packet"
-	"github.com/256dpi/gomqtt/session"
 	"github.com/jpillora/backoff"
+	"github.com/rigoiot/gomqtt/session"
 	"gopkg.in/tomb.v2"
 )
 

@@ -4,7 +4,7 @@ import (
 	"sync"
 
 	"github.com/256dpi/gomqtt/packet"
-	"github.com/256dpi/gomqtt/session"
+	"github.com/rigoiot/gomqtt/session"
 	"github.com/256dpi/gomqtt/topic"
 )
 
